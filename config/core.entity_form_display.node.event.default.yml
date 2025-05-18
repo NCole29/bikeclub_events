@@ -1,0 +1,451 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.event.banner_image
+    - field.field.node.event.field_components
+    - field.field.node.event.field_date
+    - field.field.node.event.field_location
+    - field.field.node.event.field_padding
+    - field.field.node.event.field_page_access
+    - field.field.node.event.field_registration
+    - field.field.node.event.field_registration_form
+    - field.field.node.event.field_registration_free_form
+    - field.field.node.event.field_registration_link
+    - field.field.node.event.field_results_access
+    - field.field.node.event.field_summary
+    - field.field.node.event.field_text
+    - field.field.node.event.field_type_of_page
+    - field.field.node.event.layout_builder__layout
+    - node.type.event
+    - workflows.workflow.editorial
+  module:
+    - conditional_fields
+    - datetime
+    - datetimehideseconds
+    - field_group
+    - layout_paragraphs
+    - link
+    - media_library
+    - text
+    - webform
+third_party_settings:
+  field_group:
+    group_place_announcement_on_home:
+      children:
+        - promote
+        - sticky
+        - field_summary
+      label: 'Summary for home page'
+      region: content
+      parent_name: group_tabs
+      weight: 11
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: 'Check "Promoted to front page" and fill summary.'
+        required_fields: true
+    group_banner_image:
+      children:
+        - banner_image
+        - field_padding
+      label: 'Banner image'
+      region: content
+      parent_name: group_tabs
+      weight: 12
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: '<em>Banner image</em> displays one or more images across the top of the page. Click <strong>Add media</strong> and select Banner or Gallery.<br> - <strong>Banner</strong> presents a single image or a slideshow of multiple images that span the page width.<br> - <strong>Gallery</strong> fits multiple images within the screen width.'
+        required_fields: true
+        open: 0
+    group_tabs:
+      children:
+        - group_page_content
+        - group_place_announcement_on_home
+        - group_banner_image
+        - group_registration
+      label: Tabs
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: tabs
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        direction: horizontal
+        width_breakpoint: 640
+    group_page_content:
+      children:
+        - title
+        - field_location
+        - field_date
+        - field_type_of_page
+        - field_text
+        - field_components
+        - field_page_access
+      label: 'Page content'
+      region: content
+      parent_name: group_tabs
+      weight: 10
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: open
+        description: ''
+        required_fields: true
+    group_registration:
+      children:
+        - field_registration
+        - field_registration_free_form
+        - field_registration_form
+        - field_registration_link
+        - field_results_access
+      label: Registration
+      region: content
+      parent_name: group_tabs
+      weight: 13
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+id: node.event.default
+targetEntityType: node
+bundle: event
+mode: default
+content:
+  banner_image:
+    type: media_library_widget
+    weight: 15
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_components:
+    type: layout_paragraphs
+    weight: 7
+    region: content
+    settings:
+      view_mode: default
+      preview_view_mode: default
+      form_display_mode: default
+      nesting_depth: 0
+      require_layouts: 0
+      empty_message: ''
+    third_party_settings:
+      conditional_fields:
+        995ce612-f4a2-418d-8781-64669fd2c880:
+          entity_type: node
+          bundle: event
+          dependee: field_type_of_page
+          settings:
+            state: visible
+            reset: false
+            condition: value
+            grouping: AND
+            values_set: 2
+            value: ''
+            values: '2'
+            value_form:
+              -
+                value: '1'
+            effect: show
+            effect_options: {  }
+            selector: ''
+  field_date:
+    type: datetime_default
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings:
+      datetimehideseconds:
+        hide: true
+  field_location:
+    type: entity_reference_autocomplete
+    weight: 2
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: 'Enter place name'
+    third_party_settings: {  }
+  field_padding:
+    type: boolean_checkbox
+    weight: 16
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_page_access:
+    type: options_select
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_registration:
+    type: options_buttons
+    weight: 13
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_registration_form:
+    type: webform_entity_reference_select
+    weight: 15
+    region: content
+    settings:
+      default_data: false
+      webforms: {  }
+    third_party_settings:
+      conditional_fields:
+        90a3f531-f0f4-4057-84a5-d73e75a2e649:
+          entity_type: node
+          bundle: event
+          dependee: field_registration
+          settings:
+            state: visible
+            reset: false
+            condition: value
+            grouping: AND
+            values_set: 2
+            value: ''
+            values: '2'
+            value_form:
+              -
+                value: '0'
+            effect: show
+            effect_options: {  }
+            selector: ''
+  field_registration_free_form:
+    type: webform_entity_reference_select
+    weight: 14
+    region: content
+    settings:
+      default_data: true
+      webforms: {  }
+    third_party_settings:
+      conditional_fields:
+        de573882-7769-4ae8-b355-756a7927cb97:
+          entity_type: node
+          bundle: event
+          dependee: field_registration
+          settings:
+            state: visible
+            reset: false
+            condition: value
+            grouping: AND
+            values_set: 2
+            value: ''
+            values: '1'
+            value_form:
+              -
+                value: '0'
+            effect: show
+            effect_options: {  }
+            selector: ''
+  field_registration_link:
+    type: link_default
+    weight: 16
+    region: content
+    settings:
+      placeholder_url: 'e.g., /civicrm/event/register?reset=1&id=XX'
+      placeholder_title: 'e.g., Register now'
+    third_party_settings:
+      conditional_fields:
+        f1d880bd-1491-4e9e-b97d-38509be5c873:
+          entity_type: node
+          bundle: event
+          dependee: field_registration
+          settings:
+            state: visible
+            reset: false
+            condition: value
+            grouping: AND
+            values_set: 2
+            value: ''
+            values: '3'
+            value_form:
+              -
+                value: '0'
+            effect: show
+            effect_options: {  }
+            selector: ''
+  field_results_access:
+    type: entity_reference_autocomplete
+    weight: 17
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings:
+      conditional_fields:
+        b40de4ae-9d1d-4c91-b487-e8b1dbc7a05c:
+          entity_type: node
+          bundle: event
+          dependee: field_registration
+          settings:
+            state: visible
+            reset: false
+            condition: value
+            grouping: AND
+            values_set: 3
+            value: ''
+            values: "1\r\n2"
+            value_form:
+              -
+                value: '0'
+            effect: show
+            effect_options: {  }
+            selector: ''
+  field_summary:
+    type: text_textarea
+    weight: 12
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings:
+      conditional_fields:
+        948140ee-01ff-40ed-b07e-691d7abb5212:
+          entity_type: node
+          bundle: event
+          dependee: promote
+          settings:
+            state: visible
+            reset: false
+            condition: checked
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              value: false
+            effect: show
+            effect_options: {  }
+            selector: ''
+  field_text:
+    type: text_textarea
+    weight: 6
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings:
+      conditional_fields:
+        27380e20-ebbc-46e0-a02f-7fbb6f319dc9:
+          entity_type: node
+          bundle: event
+          dependee: field_type_of_page
+          settings:
+            state: visible
+            reset: false
+            condition: value
+            grouping: AND
+            values_set: 2
+            value: ''
+            values: '1'
+            value_form:
+              -
+                value: '1'
+            effect: show
+            effect_options: {  }
+            selector: ''
+  field_type_of_page:
+    type: options_buttons
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    weight: 9
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  publish_on:
+    type: datetime_timestamp_no_default
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 2
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    weight: 10
+    region: content
+    settings:
+      display_label: true
+    third_party_settings:
+      conditional_fields:
+        7a460820-8cfd-4a52-a342-6afd587af0c0:
+          entity_type: node
+          bundle: event
+          dependee: promote
+          settings:
+            state: visible
+            reset: false
+            condition: checked
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              value: false
+            effect: show
+            effect_options: {  }
+            selector: ''
+  title:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 5
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  unpublish_on:
+    type: datetime_timestamp_no_default
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  url_redirects:
+    weight: 50
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  layout_builder__layout: true
+  path: true

@@ -1,0 +1,28 @@
+langcode: en
+status: true
+id: events_coordinator
+label: 'Events coordinator'
+weight: -5
+is_admin: false
+permissions:
+  - 'access administration pages'
+  - 'access block library'
+  - 'access coffee'
+  - 'access content overview'
+  - 'access contextual links'
+  - 'access help pages'  
+  - 'access media overview'  
+  - 'access toolbar'
+  - 'access any webform configuration'
+  - 'access webform help'
+  - 'access webform overview'
+  - 'create basic block content'  
+  - 'create media'
+  - 'delete media'
+  - 'update media'  
+  - 'create webform' 
+  - 'delete own webform'
+  - 'edit own webform'
+  - 'view the administration theme'
+  - 'view own unpublished content'
+  - 'view unpublished paragraphs'

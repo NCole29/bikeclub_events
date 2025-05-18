@@ -1,0 +1,35 @@
+name: 'Bikeclub Events'
+description: 'Provides Event content type.'
+type: 'Content type'
+recipes:
+  - bikeclub_content_type_base
+  - bikeclub_field_storage_registration
+  - bikeclub_banner
+  - bikeclub_locations
+install:
+  - link
+  - menu_ui  
+  # Contrib.
+  - conditional_fields
+  - datetimehideseconds
+  - smart_date
+config:
+  actions:
+    user.role.site_admin:
+      grantPermissions:
+        - 'create event content'
+        - 'create location content'
+        - 'delete any event content'
+        - 'delete any location content'
+        - 'edit any event content'
+        - 'edit any location content'
+        - 'configure editable event node layout overrides'
+    user.role.events_coordinator:
+      grantPermissions:
+        - 'create event content'
+        - 'create location content'
+        - 'delete own event content'
+        - 'delete own location content'
+        - 'edit own event content'
+        - 'edit own location content'
+        - 'configure editable event node layout overrides'

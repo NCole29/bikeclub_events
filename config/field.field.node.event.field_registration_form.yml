@@ -1,0 +1,31 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_registration_form
+    - node.type.event
+    - webform.webform.register_for_picnic
+  module:
+    - webform
+id: node.event.field_registration_form
+field_name: field_registration_form
+entity_type: node
+bundle: event
+label: 'Registration, Paid event webform'
+description: '<big>Schedule open and close dates for registration using the registration form settings.</big>'
+required: false
+translatable: false
+default_value:
+  -
+    target_uuid: 5f3e73f9-8793-4d44-a57a-0d16f9a50c58
+    default_data: null
+    status: open
+    open: ''
+    close: ''
+default_value_callback: ''
+settings:
+  handler: 'default:webform'
+  handler_settings:
+    target_bundles: null
+    auto_create: false
+field_type: webform
