@@ -24,7 +24,7 @@
     "bikeclub/bikeclub_locations": ">=1.0",
     "drupal/conditional_fields": "^4.0@alpha",		
     "drupal/datetimehideseconds": ">=1.0",
-    "drupal/smart_date": ">=4.0"
+    "drupal/smart_date": ">=4.2"
   },
   "version": "1.0.1"
 }
