@@ -1,3 +1,4 @@
+uuid: 52daac93-a923-4715-adff-e202226ba6b4
 langcode: en
 status: true
 dependencies:
@@ -9,6 +10,7 @@ dependencies:
     - field.field.node.event.field_padding
     - field.field.node.event.field_page_access
     - field.field.node.event.field_registration
+    - field.field.node.event.field_registration_closing_date
     - field.field.node.event.field_registration_form
     - field.field.node.event.field_registration_free_form
     - field.field.node.event.field_registration_link
@@ -21,14 +23,18 @@ dependencies:
     - workflows.workflow.editorial
   module:
     - conditional_fields
+    - content_moderation
     - datetime
-    - datetimehideseconds
     - field_group
     - layout_paragraphs
     - link
     - media_library
+    - scheduler
     - text
     - webform
+  enforced:
+    module:
+      - club_event
 third_party_settings:
   field_group:
     group_place_announcement_on_home:
@@ -122,6 +128,8 @@ third_party_settings:
         formatter: closed
         description: ''
         required_fields: true
+_core:
+  default_config_hash: m3xn0fZAlo3nuo4iGP_kcMOzyIWjrBdCRhFrT_AXpdw
 id: node.event.default
 targetEntityType: node
 bundle: event
@@ -202,6 +210,12 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_registration_closing_date:
+    type: datetime_default
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_registration_form:
     type: webform_entity_reference_select
     weight: 15
@@ -235,7 +249,8 @@ content:
     region: content
     settings:
       default_data: true
-      webforms: {  }
+      webforms:
+        - free_event
     third_party_settings:
       conditional_fields:
         de573882-7769-4ae8-b355-756a7927cb97:
@@ -371,6 +386,12 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   promote:
     type: boolean_checkbox
     weight: 9
@@ -380,13 +401,18 @@ content:
     third_party_settings: {  }
   publish_on:
     type: datetime_timestamp_no_default
-    weight: 3
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  scheduler_settings:
+    weight: 7
     region: content
     settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 2
+    weight: 1
     region: content
     settings:
       display_label: true
@@ -426,7 +452,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 5
+    weight: 4
     region: content
     settings:
       match_operator: CONTAINS
@@ -436,12 +462,12 @@ content:
     third_party_settings: {  }
   unpublish_on:
     type: datetime_timestamp_no_default
-    weight: 4
+    weight: 3
     region: content
     settings: {  }
     third_party_settings: {  }
   url_redirects:
-    weight: 50
+    weight: 6
     region: content
     settings: {  }
     third_party_settings: {  }

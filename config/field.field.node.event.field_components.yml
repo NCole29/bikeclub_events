@@ -1,3 +1,4 @@
+uuid: 3dd60ddd-2ac7-49a9-b000-3205151a3555
 langcode: en
 status: true
 dependencies:
@@ -6,6 +7,11 @@ dependencies:
     - node.type.event
   module:
     - entity_reference_revisions
+  enforced:
+    module:
+      - club_event
+_core:
+  default_config_hash: Dzh-HRYCvaIBo8tpMcA-Tdi5_h6sil1-L9WdENzsLow
 id: node.event.field_components
 field_name: field_components
 entity_type: node
@@ -22,6 +28,12 @@ settings:
     target_bundles: null
     negate: 1
     target_bundles_drag_drop:
+      accordion:
+        weight: 8
+        enabled: false
+      anchor_list:
+        weight: 9
+        enabled: false
       callout:
         weight: 10
         enabled: false
@@ -33,5 +45,11 @@ settings:
         enabled: false
       text:
         weight: 13
+        enabled: false
+      text_and_16_9_image:
+        weight: 15
+        enabled: false
+      text_and_4_3_image:
+        weight: 16
         enabled: false
 field_type: entity_reference_revisions

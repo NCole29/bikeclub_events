@@ -1,3 +1,4 @@
+uuid: 8e30becd-5f1a-454e-81fc-6fc36c8fea16
 langcode: en
 status: true
 dependencies:
@@ -5,6 +6,8 @@ dependencies:
     - field.storage.node.field_location
     - node.type.event
     - node.type.location
+_core:
+  default_config_hash: uFgVqVn4a1N1y1rk8pyxqHAxhj0cdpdORQSth3Yna6w
 id: node.event.field_location
 field_name: field_location
 entity_type: node

@@ -1,3 +1,4 @@
+uuid: 3ec3f5cd-e9ba-450a-9e86-3fa2ac5cd31d
 langcode: en
 status: true
 dependencies:
@@ -6,6 +7,8 @@ dependencies:
     - node.type.event
   module:
     - options
+_core:
+  default_config_hash: OIMisczdrE_Plenr4cy_w_KR-IdKQt1UC59JZdHy62A
 id: node.event.field_registration
 field_name: field_registration
 entity_type: node

@@ -1,3 +1,4 @@
+uuid: 9baa06dc-401f-46bc-8008-7d3efff731d2
 langcode: en
 status: true
 dependencies:
@@ -5,6 +6,8 @@ dependencies:
     - field.storage.node.field_page_access
     - node.type.event
     - taxonomy.vocabulary.page_access
+_core:
+  default_config_hash: AoWXOa05Uhn5nd40fnQ-RQdqJ6mbX4mDEOj-CY22vrs
 id: node.event.field_page_access
 field_name: field_page_access
 entity_type: node

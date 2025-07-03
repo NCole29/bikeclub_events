@@ -1,23 +1,27 @@
+uuid: 32451f88-2122-4c13-83df-c00074ef282e
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.field_registration_form
     - node.type.event
-    - webform.webform.register_for_picnic
+    - webform.webform.paid_event_5
   module:
     - webform
+  enforced:
+    module:
+      - club_event
 id: node.event.field_registration_form
 field_name: field_registration_form
 entity_type: node
 bundle: event
-label: 'Registration, Paid event webform'
-description: '<big>Schedule open and close dates for registration using the registration form settings.</big>'
+label: 'Select a paid event webform'
+description: "The Paid event webform opens in a new web page.<br>\r\nSet open and close dates for the form (below) to display a closing date on the Event page. To open the form immediately, select a past date."
 required: false
 translatable: false
 default_value:
   -
-    target_uuid: 5f3e73f9-8793-4d44-a57a-0d16f9a50c58
+    target_uuid: 62a80706-1aa0-49c9-a8af-7bedf921debd
     default_data: null
     status: open
     open: ''

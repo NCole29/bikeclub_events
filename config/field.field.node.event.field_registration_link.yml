@@ -1,3 +1,4 @@
+uuid: 6c10cdc4-1fe2-4bca-88c1-bec41d29a231
 langcode: en
 status: true
 dependencies:
@@ -6,6 +7,11 @@ dependencies:
     - node.type.event
   module:
     - link
+  enforced:
+    module:
+      - club_event
+_core:
+  default_config_hash: PALk8f00CnCY0euraE2pJ5c6Bzgy6MzouwuB_OfB_lw
 id: node.event.field_registration_link
 field_name: field_registration_link
 entity_type: node

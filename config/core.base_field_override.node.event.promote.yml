@@ -1,8 +1,14 @@
+uuid: c81952a6-c351-4b13-a40e-cd889de4fe66
 langcode: en
 status: true
 dependencies:
   config:
     - node.type.event
+  enforced:
+    module:
+      - club_event
+_core:
+  default_config_hash: fcS6ewfm9bsSXHOXP-SWIy-OXKTXX6HD9BsrTqhjj84
 id: node.event.promote
 field_name: promote
 entity_type: node
