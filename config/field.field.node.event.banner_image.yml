@@ -1,4 +1,3 @@
-uuid: 51cb1a15-230b-4991-834e-175f82e60aa0
 langcode: en
 status: true
 dependencies:
@@ -7,8 +6,6 @@ dependencies:
     - media.type.gallery
     - media.type.image_crop_20_7
     - node.type.event
-_core:
-  default_config_hash: bJSnDa-4S0WDnNQO8KN4Lmw9vbH1rBk8sl3xjJ1g6uE
 id: node.event.banner_image
 field_name: banner_image
 entity_type: node

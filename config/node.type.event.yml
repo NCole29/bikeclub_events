@@ -1,4 +1,3 @@
-uuid: 7c7bbd60-f461-4e80-bf95-e4b01091dabe
 langcode: en
 status: true
 dependencies:
@@ -6,9 +5,6 @@ dependencies:
     - menu_ui
     - node_revision_delete
     - scheduler
-  enforced:
-    module:
-      - club_event
 third_party_settings:
   menu_ui:
     available_menus:
@@ -40,8 +36,6 @@ third_party_settings:
       status: false
       settings:
         age: 1
-_core:
-  default_config_hash: IT2w0M8R-akIPHuSW86ktF-x6AbKEApzviiE9jWU-A0
 name: Event
 type: event
 description: "<em>Events</em> may be used for free or paid events, with or without registration.<br>\r\n-- Events are listed on the calendar and shown on the home page through the date of the event (Events sidebar and optional summary).<br>\r\n-- The \"Free event\" registration form may be used for multiple events; results for EACH event are on the Results tab of the event page."

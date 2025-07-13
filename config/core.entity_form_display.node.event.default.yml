@@ -1,10 +1,11 @@
-uuid: 52daac93-a923-4715-adff-e202226ba6b4
 langcode: en
 status: true
 dependencies:
   config:
     - field.field.node.event.banner_image
     - field.field.node.event.field_components
+    - field.field.node.event.field_contact_form
+    - field.field.node.event.field_contact_person
     - field.field.node.event.field_date
     - field.field.node.event.field_location
     - field.field.node.event.field_padding
@@ -25,6 +26,7 @@ dependencies:
     - conditional_fields
     - content_moderation
     - datetime
+    - datetimehideseconds
     - field_group
     - layout_paragraphs
     - link
@@ -32,9 +34,6 @@ dependencies:
     - scheduler
     - text
     - webform
-  enforced:
-    module:
-      - club_event
 third_party_settings:
   field_group:
     group_place_announcement_on_home:
@@ -45,7 +44,7 @@ third_party_settings:
       label: 'Summary for home page'
       region: content
       parent_name: group_tabs
-      weight: 11
+      weight: 12
       format_type: details
       format_settings:
         classes: ''
@@ -61,7 +60,7 @@ third_party_settings:
       label: 'Banner image'
       region: content
       parent_name: group_tabs
-      weight: 12
+      weight: 13
       format_type: tab
       format_settings:
         classes: ''
@@ -97,6 +96,7 @@ third_party_settings:
         - field_text
         - field_components
         - field_page_access
+        - group_contact_link
       label: 'Page content'
       region: content
       parent_name: group_tabs
@@ -119,12 +119,29 @@ third_party_settings:
       label: Registration
       region: content
       parent_name: group_tabs
-      weight: 13
+      weight: 14
       format_type: tab
       format_settings:
         classes: ''
         show_empty_fields: false
         id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_contact_link:
+      children:
+        - field_contact_form
+        - field_contact_person
+      label: 'Contact link'
+      region: hidden
+      parent_name: group_page_content
+      weight: 7
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
         formatter: closed
         description: ''
         required_fields: true
@@ -144,7 +161,7 @@ content:
     third_party_settings: {  }
   field_components:
     type: layout_paragraphs
-    weight: 7
+    weight: 6
     region: content
     settings:
       view_mode: default
@@ -155,7 +172,7 @@ content:
       empty_message: ''
     third_party_settings:
       conditional_fields:
-        995ce612-f4a2-418d-8781-64669fd2c880:
+        2bd4c475-3a19-43a1-8d85-9e01c28da32a:
           entity_type: node
           bundle: event
           dependee: field_type_of_page
@@ -170,6 +187,42 @@ content:
             value_form:
               -
                 value: '1'
+            effect: show
+            effect_options: {  }
+            selector: ''
+  field_contact_form:
+    type: options_select
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings:
+      conditional_fields: {  }
+  field_contact_person:
+    type: entity_reference_autocomplete
+    weight: 6
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings:
+      conditional_fields:
+        116eb86e-39c6-4c6f-8237-6131893b71d0:
+          entity_type: node
+          bundle: event
+          dependee: field_contact_form
+          settings:
+            state: visible
+            reset: false
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                target_id: personal
             effect: show
             effect_options: {  }
             selector: ''
@@ -210,12 +263,6 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_registration_closing_date:
-    type: datetime_default
-    weight: 7
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   field_registration_form:
     type: webform_entity_reference_select
     weight: 15
@@ -225,7 +272,7 @@ content:
       webforms: {  }
     third_party_settings:
       conditional_fields:
-        90a3f531-f0f4-4057-84a5-d73e75a2e649:
+        ac43495c-17bf-4424-a44b-bd474ccaec54:
           entity_type: node
           bundle: event
           dependee: field_registration
@@ -234,12 +281,12 @@ content:
             reset: false
             condition: value
             grouping: AND
-            values_set: 2
+            values_set: 1
             value: ''
-            values: '2'
+            values: {  }
             value_form:
               -
-                value: '0'
+                value: '2'
             effect: show
             effect_options: {  }
             selector: ''
@@ -253,7 +300,7 @@ content:
         - free_event
     third_party_settings:
       conditional_fields:
-        de573882-7769-4ae8-b355-756a7927cb97:
+        7e8ad0e5-2ed9-41ac-86ab-4982c291eeff:
           entity_type: node
           bundle: event
           dependee: field_registration
@@ -262,12 +309,12 @@ content:
             reset: false
             condition: value
             grouping: AND
-            values_set: 2
+            values_set: 1
             value: ''
-            values: '1'
+            values: {  }
             value_form:
               -
-                value: '0'
+                value: '1'
             effect: show
             effect_options: {  }
             selector: ''
@@ -280,7 +327,7 @@ content:
       placeholder_title: 'e.g., Register now'
     third_party_settings:
       conditional_fields:
-        f1d880bd-1491-4e9e-b97d-38509be5c873:
+        dd9c8822-ee89-4bf5-8ee2-d6cd148aac8f:
           entity_type: node
           bundle: event
           dependee: field_registration
@@ -289,12 +336,12 @@ content:
             reset: false
             condition: value
             grouping: AND
-            values_set: 2
+            values_set: 1
             value: ''
-            values: '3'
+            values: {  }
             value_form:
               -
-                value: '0'
+                value: '3'
             effect: show
             effect_options: {  }
             selector: ''
@@ -309,21 +356,39 @@ content:
       placeholder: ''
     third_party_settings:
       conditional_fields:
-        b40de4ae-9d1d-4c91-b487-e8b1dbc7a05c:
+        4ca327f3-7a2a-415f-a35f-2a3a0f824fbe:
           entity_type: node
           bundle: event
           dependee: field_registration
           settings:
-            state: visible
+            state: '!visible'
             reset: false
             condition: value
             grouping: AND
-            values_set: 3
+            values_set: 1
             value: ''
-            values: "1\r\n2"
+            values: {  }
             value_form:
               -
                 value: '0'
+            effect: show
+            effect_options: {  }
+            selector: ''
+        13e573f0-09c9-4f48-ada4-a5458d51d6c3:
+          entity_type: node
+          bundle: event
+          dependee: field_registration
+          settings:
+            state: disabled
+            reset: false
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: '3'
             effect: show
             effect_options: {  }
             selector: ''
@@ -336,7 +401,7 @@ content:
       placeholder: ''
     third_party_settings:
       conditional_fields:
-        948140ee-01ff-40ed-b07e-691d7abb5212:
+        1557c195-6519-4a66-8bb6-0fede3b680fd:
           entity_type: node
           bundle: event
           dependee: promote
@@ -355,14 +420,14 @@ content:
             selector: ''
   field_text:
     type: text_textarea
-    weight: 6
+    weight: 5
     region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings:
       conditional_fields:
-        27380e20-ebbc-46e0-a02f-7fbb6f319dc9:
+        e3aaf8c8-39a8-4693-b525-d7ac4c801dcf:
           entity_type: node
           bundle: event
           dependee: field_type_of_page
@@ -386,6 +451,12 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  group_place_announcement_on_home:
+    weight: 26
+    region: content
+    settings: {  }
+    third_party_settings:
+      conditional_fields: {  }
   moderation_state:
     type: moderation_state_default
     weight: 5
@@ -425,7 +496,7 @@ content:
       display_label: true
     third_party_settings:
       conditional_fields:
-        7a460820-8cfd-4a52-a342-6afd587af0c0:
+        b8b1f767-1ff1-4689-b345-dfa2977c359f:
           entity_type: node
           bundle: event
           dependee: promote
@@ -473,5 +544,6 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
+  field_registration_closing_date: true
   layout_builder__layout: true
   path: true

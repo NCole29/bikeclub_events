@@ -1,4 +1,3 @@
-uuid: 44a28cad-96ba-40ee-b3b7-49656f08ef51
 langcode: en
 status: true
 dependencies:
@@ -33,7 +32,7 @@ settings:
         rides_editor: '0'
         editor: '0'
         rides_coordinator: '0'
-        civicrm: '0'
+        membership: '0'
         site_admin: '0'
     include_anonymous: false
 field_type: entity_reference

@@ -1,4 +1,3 @@
-uuid: 32451f88-2122-4c13-83df-c00074ef282e
 langcode: en
 status: true
 dependencies:
@@ -8,9 +7,6 @@ dependencies:
     - webform.webform.paid_event_5
   module:
     - webform
-  enforced:
-    module:
-      - club_event
 id: node.event.field_registration_form
 field_name: field_registration_form
 entity_type: node

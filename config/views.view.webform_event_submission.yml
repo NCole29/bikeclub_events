@@ -1,28 +1,16 @@
-uuid: 9f08eb2c-94c8-4523-81a2-1e1c5b845b04
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_datetime
+    - field.storage.node.field_date
     - system.menu.club-reports
-    - user.role.administrator
-    - user.role.authenticated
-    - user.role.board
-    - user.role.civicrm
-    - user.role.editor
-    - user.role.rides_coordinator
-    - user.role.site_admin
-    - webform.webform.bike_maintenance
     - webform.webform.free_event
   module:
+    - datetime
     - node
-    - smart_date
     - user
-    - views_infinite_scroll
     - webform
     - webform_views
-_core:
-  default_config_hash: lencGx4BL4z4gWIXuYNjvLLUUQUxENF6m2TBUvIMHzM
 id: webform_event_submission
 label: Events-Free
 module: views
@@ -90,16 +78,16 @@ display:
           empty_zero: false
           hide_alter_empty: true
           link: 0
-        webform_submission_value_1:
-          id: webform_submission_value_1
-          table: webform_submission_field_event_registration_civicrm_1_contact_1_contact_existing
-          field: webform_submission_value
-          relationship: none
+        field_date:
+          id: field_date
+          table: node__field_date
+          field: field_date
+          relationship: entity_id
           group_type: group
           admin_label: ''
-          plugin_id: webform_submission_field
-          label: Name
-          exclude: true
+          plugin_id: field
+          label: Date
+          exclude: false
           alter:
             alter_text: false
             text: ''
@@ -139,10 +127,21 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          webform_element_format: value
-          webform_multiple_value: true
-          webform_multiple_delta: 0
-          webform_check_access: 0
+          click_sort_column: value
+          type: datetime_default
+          settings:
+            timezone_override: ''
+            format_type: short
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
         completed:
           id: completed
           table: webform_submission
@@ -413,14 +412,15 @@ display:
         - 'languages:language_interface'
         - url.query_args
         - user
-      tags: {  }
+      tags:
+        - 'config:field.storage.node.field_date'
   free_event_counts:
     id: free_event_counts
     display_title: 'Free Event registrations'
     display_plugin: page
     position: 2
     display_options:
-      title: 'Free Event registrations'
+      title: "Events using the 'Free Event' registration form"
       fields:
         nid:
           id: nid
@@ -539,15 +539,15 @@ display:
           empty_zero: false
           hide_alter_empty: true
           link: 0
-        field_datetime:
-          id: field_datetime
-          table: node__field_datetime
-          field: field_datetime
+        field_date:
+          id: field_date
+          table: node__field_date
+          field: field_date
           relationship: entity_id
           group_type: group
           admin_label: ''
           plugin_id: field
-          label: 'Event date'
+          label: Date
           exclude: false
           alter:
             alter_text: false
@@ -589,14 +589,11 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
-          type: smartdate_default
+          type: datetime_default
           settings:
             timezone_override: ''
-            format: date_only
-            force_chronological: false
-            add_classes: false
-            time_wrapper: true
-          group_column: entity_id
+            format_type: medium
+          group_column: value
           group_columns: {  }
           group_rows: true
           delta_limit: 0
@@ -616,7 +613,7 @@ display:
           entity_type: webform_submission
           entity_field: completed
           plugin_id: field
-          label: 'Total # registrants'
+          label: '# Registrants'
           exclude: false
           alter:
             alter_text: false
@@ -690,15 +687,18 @@ display:
           prefix: ''
           suffix: ''
       pager:
-        type: infinite_scroll
+        type: full
         options:
           offset: 0
+          pagination_heading_level: h4
           items_per_page: 30
           total_pages: null
           id: 0
           tags:
             next: ››
             previous: ‹‹
+            first: '« First'
+            last: 'Last »'
           expose:
             items_per_page: false
             items_per_page_label: 'Items per page'
@@ -707,39 +707,31 @@ display:
             items_per_page_options_all_label: '- All -'
             offset: false
             offset_label: Offset
-          views_infinite_scroll:
-            button_text: 'Load More'
-            automatically_load_content: true
-            initially_load_all_pages: false
+          quantity: 9
       access:
-        type: role
+        type: perm
         options:
-          role:
-            administrator: administrator
-            board: board
-            editor: editor
-            rides_coordinator: rides_coordinator
-            civicrm: civicrm
-            site_admin: site_admin
+          perm: 'access administration pages'
       sorts:
-        field_datetime_value:
-          id: field_datetime_value
-          table: node__field_datetime
-          field: field_datetime_value
+        title:
+          id: title
+          table: node_field_data
+          field: title
           relationship: entity_id
           group_type: group
           admin_label: ''
-          plugin_id: date
-          order: DESC
+          entity_type: node
+          entity_field: title
+          plugin_id: standard
+          order: ASC
           expose:
             label: ''
             field_identifier: ''
           exposed: false
-          granularity: hour
       arguments: {  }
       filters:
-        webform_id:
-          id: webform_id
+        webform_id_1:
+          id: webform_id_1
           table: webform_submission
           field: webform_id
           relationship: none
@@ -750,19 +742,18 @@ display:
           plugin_id: bundle
           operator: in
           value:
-            bike_maintenance: bike_maintenance
             free_event: free_event
           group: 1
           exposed: false
           expose:
-            operator_id: ''
-            label: ''
-            description: ''
+            operator_id: webform_id_1_op
+            label: Webform
+            description: null
             use_operator: false
-            operator: ''
+            operator: webform_id_1_op
             operator_limit_selection: false
             operator_list: {  }
-            identifier: ''
+            identifier: webform_id_1
             required: false
             remember: false
             multiple: false
@@ -847,9 +838,9 @@ display:
         - 'languages:language_interface'
         - url.query_args
         - user
-        - user.roles
+        - user.permissions
       tags:
-        - 'config:field.storage.node.field_datetime'
+        - 'config:field.storage.node.field_date'
   free_event_registrants:
     id: free_event_registrants
     display_title: 'Event registrants'
@@ -909,15 +900,15 @@ display:
           empty_zero: false
           hide_alter_empty: true
           link: 0
-        field_datetime:
-          id: field_datetime
-          table: node__field_datetime
-          field: field_datetime
+        field_date:
+          id: field_date
+          table: node__field_date
+          field: field_date
           relationship: entity_id
           group_type: group
           admin_label: ''
           plugin_id: field
-          label: 'Event date'
+          label: Date
           exclude: false
           alter:
             alter_text: false
@@ -959,13 +950,10 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
-          type: smartdate_default
+          type: datetime_default
           settings:
             timezone_override: ''
-            format: date_only
-            force_chronological: false
-            add_classes: false
-            time_wrapper: true
+            format_type: short
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -1277,15 +1265,18 @@ display:
           separator: ', '
           field_api_classes: false
       pager:
-        type: infinite_scroll
+        type: full
         options:
           offset: 0
+          pagination_heading_level: h4
           items_per_page: 30
           total_pages: null
           id: 0
           tags:
             next: ››
             previous: ‹‹
+            first: '« First'
+            last: 'Last »'
           expose:
             items_per_page: false
             items_per_page_label: 'Items per page'
@@ -1294,19 +1285,11 @@ display:
             items_per_page_options_all_label: '- All -'
             offset: false
             offset_label: Offset
-          views_infinite_scroll:
-            button_text: 'Load More'
-            automatically_load_content: true
-            initially_load_all_pages: false
+          quantity: 9
       access:
-        type: role
+        type: perm
         options:
-          role:
-            administrator: administrator
-            board: board
-            rides_coordinator: rides_coordinator
-            civicrm: civicrm
-            site_admin: site_admin
+          perm: 'access administration pages'
       sorts:
         completed:
           id: completed
@@ -1378,7 +1361,6 @@ display:
           plugin_id: bundle
           operator: in
           value:
-            bike_maintenance: bike_maintenance
             free_event: free_event
           group: 1
           exposed: false
@@ -1470,9 +1452,9 @@ display:
         - url
         - url.query_args
         - user
-        - user.roles
+        - user.permissions
       tags:
-        - 'config:field.storage.node.field_datetime'
+        - 'config:field.storage.node.field_date'
   page_1:
     id: page_1
     display_title: 'Free Events'
@@ -1598,15 +1580,15 @@ display:
           empty_zero: false
           hide_alter_empty: true
           link: 0
-        field_datetime:
-          id: field_datetime
-          table: node__field_datetime
-          field: field_datetime
+        field_date:
+          id: field_date
+          table: node__field_date
+          field: field_date
           relationship: entity_id
           group_type: group
           admin_label: ''
           plugin_id: field
-          label: 'Event date'
+          label: Date
           exclude: false
           alter:
             alter_text: false
@@ -1648,13 +1630,10 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
-          type: smartdate_default
+          type: datetime_default
           settings:
             timezone_override: ''
-            format: date_only
-            force_chronological: false
-            add_classes: false
-            time_wrapper: true
+            format_type: short
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -1901,10 +1880,9 @@ display:
           output_url_as_text: false
           absolute: false
       access:
-        type: role
+        type: perm
         options:
-          role:
-            authenticated: authenticated
+          perm: 'view own webform submission'
       arguments:
         webform_submission_value:
           id: webform_submission_value
@@ -1951,19 +1929,18 @@ display:
           plugin_id: bundle
           operator: in
           value:
-            bike_maintenance: bike_maintenance
             free_event: free_event
           group: 1
           exposed: false
           expose:
-            operator_id: ''
-            label: ''
-            description: ''
+            operator_id: webform_id_op
+            label: Webform
+            description: null
             use_operator: false
-            operator: ''
+            operator: webform_id_op
             operator_limit_selection: false
             operator_list: {  }
-            identifier: ''
+            identifier: webform_id
             required: false
             remember: false
             multiple: false
@@ -2013,6 +1990,6 @@ display:
         - url
         - url.query_args
         - user
-        - user.roles
+        - user.permissions
       tags:
-        - 'config:field.storage.node.field_datetime'
+        - 'config:field.storage.node.field_date'
