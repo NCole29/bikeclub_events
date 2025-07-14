@@ -14,7 +14,6 @@ install:
   - datetimehideseconds
   - smart_date
   - webform
-  - webform_civicrm
 config:
   actions:
     user.role.site_admin:
