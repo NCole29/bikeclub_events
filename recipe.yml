@@ -8,7 +8,6 @@ recipes:
   - bikeclub_locations
 install:
   - link
-  - menu_ui  
   # Contrib.
   - conditional_fields
   - datetimehideseconds
