@@ -9,7 +9,6 @@ recipes:
 install:
   - link
   # Contrib.
-  - conditional_fields
   - datetimehideseconds
   - smart_date
   - webform
