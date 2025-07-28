@@ -5,7 +5,6 @@ dependencies:
     - core.entity_view_mode.node.past_event
     - core.entity_view_mode.node.teaser2
     - field.storage.node.field_date
-    - field.storage.node.field_datetime
     - field.storage.node.field_location
     - field.storage.node.field_summary
     - node.type.event
@@ -1129,5 +1128,4 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:field.storage.node.field_datetime'
         - 'config:field.storage.node.field_location'

@@ -4,17 +4,12 @@ dependencies:
   config:
     - core.entity_view_display.node.event.default
     - filter.format.basic_html
-    - filter.format.full_html
     - filter.format.summary_fields
     - media.type.image_crop_16_9
     - media.type.image_crop_4_3
-    - media.type.public_file
-    - node.type.announcement
     - node.type.event
     - node.type.location
-    - workflows.workflow.editorial
   module:
-    - content_moderation
     - filter
     - help
     - layout_builder
@@ -28,7 +23,7 @@ dependencies:
 id: events_coordinator
 label: 'Events coordinator'
 weight: -5
-is_admin: null
+is_admin: false
 permissions:
   - 'access administration pages'
   - 'access content overview'
@@ -37,18 +32,14 @@ permissions:
   - 'access toolbar'
   - 'access webform help'
   - 'access webform overview'
-  - 'clone announcement content'
   - 'clone event content'
   - 'configure editable event node layout overrides'
-  - 'create announcement content'
   - 'create event content'
   - 'create image_crop_16_9 media'
   - 'create image_crop_4_3 media'
   - 'create location content'
-  - 'create public_file media'
   - 'create webform'
   - 'delete media'
-  - 'delete own announcement content'
   - 'delete own event content'
   - 'delete own location content'
   - 'delete own webform'
@@ -56,18 +47,12 @@ permissions:
   - 'edit own event content'
   - 'edit own location content'
   - 'edit own webform'
-  - 'revert announcement revisions'
   - 'revert event revisions'
   - 'revert location revisions'
   - 'update media'
-  - 'use editorial transition create_new_draft'
-  - 'use editorial transition finalize_draft'
   - 'use text format basic_html'
-  - 'use text format full_html'
   - 'use text format summary_fields'
-  - 'view announcement revisions'
   - 'view event revisions'
-  - 'view latest version'
   - 'view location revisions'
   - 'view own unpublished content'
   - 'view the administration theme'

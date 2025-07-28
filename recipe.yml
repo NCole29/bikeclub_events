@@ -1,5 +1,5 @@
 name: 'Bikeclub Events'
-description: 'Provides Event content type.'
+description: 'Provides Event and Location content types.'
 type: 'Content type'
 recipes:
   - bikeclub_content_type_base
@@ -13,10 +13,13 @@ install:
   - smart_date
   - webform
 config:
+  strict: false
+  import:
+    smart_date: '*'
   actions:
     user.role.site_admin:
       createIfNotExists:
-        - label: 'Site administrator'
+        label: 'Site administrator'
       grantPermissions:
         - 'create event content'
         - 'create location content'
@@ -24,19 +27,6 @@ config:
         - 'delete any location content'
         - 'edit any event content'
         - 'edit any location content'
-        - 'configure editable event node layout overrides'
-        - 'use text format basic_html'
-        - 'use text format summary_fields'
-    user.role.events_coordinator:
-      createIfNotExists:
-        - label: 'Events coordinator'
-      grantPermissions:
-        - 'create event content'
-        - 'create location content'
-        - 'delete own event content'
-        - 'delete own location content'
-        - 'edit own event content'
-        - 'edit own location content'
         - 'configure editable event node layout overrides'
         - 'use text format basic_html'
         - 'use text format summary_fields'
