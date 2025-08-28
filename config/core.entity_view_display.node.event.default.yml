@@ -1,18 +1,22 @@
+uuid: 41f5dd1e-66ec-4411-9997-419ead134cdb
 langcode: en
 status: true
 dependencies:
   config:
     - field.field.node.event.banner_image
     - field.field.node.event.field_components
+    - field.field.node.event.field_contact_form
+    - field.field.node.event.field_contact_person
     - field.field.node.event.field_date
     - field.field.node.event.field_location
+    - field.field.node.event.field_padding
     - field.field.node.event.field_page_access
     - field.field.node.event.field_registration
     - field.field.node.event.field_registration_closing_date
     - field.field.node.event.field_registration_form
     - field.field.node.event.field_registration_free_form
     - field.field.node.event.field_registration_link
-    - field.field.node.event.field_results_access
+    - field.field.node.event.field_registrations_visible
     - field.field.node.event.field_summary
     - field.field.node.event.field_text
     - field.field.node.event.field_type_of_page
@@ -27,7 +31,11 @@ dependencies:
     - options
     - text
     - user
+    - user_contactlink
     - webform
+  enforced:
+    module:
+      - club_event
 third_party_settings:
   layout_builder:
     enabled: true
@@ -135,7 +143,7 @@ third_party_settings:
                   dialog: narrow
                   attributes:
                     class:
-                      - register-button
+                      - blue-button
                 third_party_settings: {  }
             weight: 8
             additional: {  }
@@ -151,7 +159,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
               formatter:
-                type: datetime_default
+                type: smartdate_default
                 label: above
                 settings:
                   timezone_override: ''
@@ -183,6 +191,16 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 9
             additional: {  }
+          4fa46326-4018-4b6e-95ee-8535466371e1:
+            uuid: 4fa46326-4018-4b6e-95ee-8535466371e1
+            region: first
+            configuration:
+              id: 'extra_field_block:node:event:content_moderation_control'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 10
+            additional: {  }
           e5ac2c91-0a5c-433a-98c2-717cf12db1f4:
             uuid: e5ac2c91-0a5c-433a-98c2-717cf12db1f4
             region: first
@@ -202,9 +220,93 @@ third_party_settings:
                   dialog: ''
                   attributes:
                     class:
-                      - register-button
+                      - blue-button
                 third_party_settings: {  }
             weight: 7
+            additional: {  }
+          4e776511-7314-4453-9087-51e3578cc130:
+            uuid: 4e776511-7314-4453-9087-51e3578cc130
+            region: content
+            configuration:
+              id: 'field_block:node:event:field_contact_form'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          5f341720-a5df-4f17-80ae-db9791438428:
+            uuid: 5f341720-a5df-4f17-80ae-db9791438428
+            region: content
+            configuration:
+              id: 'field_block:node:event:field_contact_person'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_contact
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+          4c99f85c-6ead-4350-8454-4370bb47cc70:
+            uuid: 4c99f85c-6ead-4350-8454-4370bb47cc70
+            region: second
+            configuration:
+              id: 'field_block:node:event:field_contact_form'
+              label: Contact
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 7
+            additional: {  }
+          f48e2f19-7834-4652-bdcd-ef713ef3811a:
+            uuid: f48e2f19-7834-4652-bdcd-ef713ef3811a
+            region: second
+            configuration:
+              id: 'field_block:node:event:field_contact_person'
+              label: Contact
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_reference_contact
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 8
+            additional: {  }
+          d32ba7d7-a4bf-44e8-886e-8a2807b84feb:
+            uuid: d32ba7d7-a4bf-44e8-886e-8a2807b84feb
+            region: first
+            configuration:
+              id: 'field_block:node:event:field_registrations_visible'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 11
             additional: {  }
         third_party_settings: {  }
       -
@@ -222,6 +324,8 @@ third_party_settings:
       restricted_categories: {  }
       blacklisted_blocks: {  }
       whitelisted_blocks: {  }
+_core:
+  default_config_hash: PQPeAqunpOvwGZxnP15dcmutds7dDb_vcfVwbDk9fKQ
 id: node.event.default
 targetEntityType: node
 bundle: event
@@ -235,6 +339,11 @@ content:
     third_party_settings: {  }
     weight: 14
     region: first
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: first
   field_components:
     type: entity_reference_revisions_entity_view
     label: hidden
@@ -243,6 +352,21 @@ content:
       link: ''
     third_party_settings: {  }
     weight: 5
+    region: content
+  field_contact_form:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_contact_person:
+    type: entity_reference_contact
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
     region: content
   field_date:
     type: datetime_default
@@ -262,6 +386,16 @@ content:
     third_party_settings: {  }
     weight: 2
     region: content
+  field_padding:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 15
+    region: first
   field_page_access:
     type: entity_reference_label
     label: above
@@ -297,13 +431,13 @@ content:
     third_party_settings: {  }
     weight: 16
     region: first
-  field_results_access:
+  field_registrations_visible:
     type: entity_reference_label
     label: above
     settings:
       link: true
     third_party_settings: {  }
-    weight: 17
+    weight: 19
     region: first
   field_summary:
     type: text_default

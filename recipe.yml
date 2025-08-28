@@ -1,5 +1,5 @@
 name: 'Bikeclub Events'
-description: 'Provides Event and Location content types.'
+description: 'Provides Event and Location content types. Map displays require a Google Maps API; see Configuration > System > Geocoder.'
 type: 'Content type'
 recipes:
   - bikeclub_content_type_base

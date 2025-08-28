@@ -1,3 +1,4 @@
+uuid: 52daac93-a923-4715-adff-e202226ba6b4
 langcode: en
 status: true
 dependencies:
@@ -14,7 +15,7 @@ dependencies:
     - field.field.node.event.field_registration_form
     - field.field.node.event.field_registration_free_form
     - field.field.node.event.field_registration_link
-    - field.field.node.event.field_results_access
+    - field.field.node.event.field_registrations_visible
     - field.field.node.event.field_summary
     - field.field.node.event.field_text
     - field.field.node.event.field_type_of_page
@@ -30,7 +31,6 @@ dependencies:
     - layout_paragraphs
     - link
     - media_library
-    - scheduler
     - text
     - webform
 third_party_settings:
@@ -44,17 +44,19 @@ third_party_settings:
       region: content
       parent_name: group_tabs
       weight: 12
-      format_type: details
+      format_type: tab
       format_settings:
         classes: ''
         show_empty_fields: false
         id: ''
-        open: false
+        label_as_html: false
+        formatter: closed
         description: 'Check "Promoted to front page" and fill summary.'
         required_fields: true
     group_banner_image:
       children:
         - banner_image
+        - field_padding
       label: 'Banner image'
       region: content
       parent_name: group_tabs
@@ -64,10 +66,10 @@ third_party_settings:
         classes: ''
         show_empty_fields: false
         id: ''
+        label_as_html: false
         formatter: closed
         description: '<em>Banner image</em> displays one or more images across the top of the page. Click <strong>Add media</strong> and select Banner or Gallery.<br> - <strong>Banner</strong> presents a single image or a slideshow of multiple images that span the page width.<br> - <strong>Gallery</strong> fits multiple images within the screen width.'
         required_fields: true
-        open: 0
     group_tabs:
       children:
         - group_page_content
@@ -113,7 +115,7 @@ third_party_settings:
         - field_registration_free_form
         - field_registration_form
         - field_registration_link
-        - field_results_access
+        - field_registrations_visible
       label: Registration
       region: content
       parent_name: group_tabs
@@ -170,7 +172,7 @@ content:
       empty_message: ''
     third_party_settings:
       conditional_fields:
-        2bd4c475-3a19-43a1-8d85-9e01c28da32a:
+        542fd326-f3b5-4324-a8c1-b7b7b8559f54:
           entity_type: node
           bundle: event
           dependee: field_type_of_page
@@ -179,12 +181,12 @@ content:
             reset: false
             condition: value
             grouping: AND
-            values_set: 2
+            values_set: 1
             value: ''
-            values: '2'
+            values: {  }
             value_form:
               -
-                value: '1'
+                value: '2'
             effect: show
             effect_options: {  }
             selector: ''
@@ -336,53 +338,16 @@ content:
             effect: show
             effect_options: {  }
             selector: ''
-  field_results_access:
+  field_registrations_visible:
     type: entity_reference_autocomplete
-    weight: 17
+    weight: 18
     region: content
     settings:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
       placeholder: ''
-    third_party_settings:
-      conditional_fields:
-        4ca327f3-7a2a-415f-a35f-2a3a0f824fbe:
-          entity_type: node
-          bundle: event
-          dependee: field_registration
-          settings:
-            state: '!visible'
-            reset: false
-            condition: value
-            grouping: AND
-            values_set: 1
-            value: ''
-            values: {  }
-            value_form:
-              -
-                value: '0'
-            effect: show
-            effect_options: {  }
-            selector: ''
-        13e573f0-09c9-4f48-ada4-a5458d51d6c3:
-          entity_type: node
-          bundle: event
-          dependee: field_registration
-          settings:
-            state: disabled
-            reset: false
-            condition: value
-            grouping: AND
-            values_set: 1
-            value: ''
-            values: {  }
-            value_form:
-              -
-                value: '3'
-            effect: show
-            effect_options: {  }
-            selector: ''
+    third_party_settings: {  }
   field_summary:
     type: text_textarea
     weight: 12
@@ -418,7 +383,7 @@ content:
       placeholder: ''
     third_party_settings:
       conditional_fields:
-        e3aaf8c8-39a8-4693-b525-d7ac4c801dcf:
+        9146368a-ec29-4384-b398-48dba1403c80:
           entity_type: node
           bundle: event
           dependee: field_type_of_page
@@ -427,9 +392,9 @@ content:
             reset: false
             condition: value
             grouping: AND
-            values_set: 2
+            values_set: 1
             value: ''
-            values: '1'
+            values: {  }
             value_form:
               -
                 value: '1'
@@ -450,7 +415,7 @@ content:
       conditional_fields: {  }
   moderation_state:
     type: moderation_state_default
-    weight: 5
+    weight: 6
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -461,12 +426,6 @@ content:
     settings:
       display_label: true
     third_party_settings: {  }
-  publish_on:
-    type: datetime_timestamp_no_default
-    weight: 2
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   scheduler_settings:
     weight: 7
     region: content
@@ -474,7 +433,7 @@ content:
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 1
+    weight: 2
     region: content
     settings:
       display_label: true
@@ -514,7 +473,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 4
+    weight: 5
     region: content
     settings:
       match_operator: CONTAINS
@@ -522,14 +481,8 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  unpublish_on:
-    type: datetime_timestamp_no_default
-    weight: 3
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   url_redirects:
-    weight: 6
+    weight: 7
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -538,3 +491,5 @@ hidden:
   field_registration_closing_date: true
   layout_builder__layout: true
   path: true
+  publish_on: true
+  unpublish_on: true
