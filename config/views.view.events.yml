@@ -15,9 +15,7 @@ dependencies:
     - smart_date
     - text
     - user
-  enforced:
-    module:
-      - club_event
+
 id: events
 label: Events
 module: views

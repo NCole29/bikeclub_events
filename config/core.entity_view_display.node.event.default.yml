@@ -1,4 +1,3 @@
-uuid: 41f5dd1e-66ec-4411-9997-419ead134cdb
 langcode: en
 status: true
 dependencies:
@@ -33,9 +32,6 @@ dependencies:
     - user
     - user_contactlink
     - webform
-  enforced:
-    module:
-      - club_event
 third_party_settings:
   layout_builder:
     enabled: true
@@ -324,8 +320,6 @@ third_party_settings:
       restricted_categories: {  }
       blacklisted_blocks: {  }
       whitelisted_blocks: {  }
-_core:
-  default_config_hash: PQPeAqunpOvwGZxnP15dcmutds7dDb_vcfVwbDk9fKQ
 id: node.event.default
 targetEntityType: node
 bundle: event
