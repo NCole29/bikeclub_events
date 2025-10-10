@@ -1,5 +1,5 @@
 name: 'Bikeclub Events'
-description: 'Provides Event and Location content types. Map displays require a Google Maps API; see Configuration > System > Geocoder.'
+description: 'Provides Event and Location content types.'
 type: 'Content type'
 recipes:
   - bikeclub_content_type_base
@@ -30,8 +30,14 @@ config:
         - 'configure editable event node layout overrides'
         - 'use text format basic_html'
         - 'use text format summary_fields'
+    user.role.authenticated:
+      grantPermissions:
+        - 'delete own webform submission'
     pathauto.pattern.content:
       action: 'update' 
       arguments:
         bundles:
           event: event
+    webform.settings:
+      ui:
+        video_display: hidden

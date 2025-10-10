@@ -30,7 +30,6 @@ dependencies:
     - smart_date
     - text
     - user
-    - user_contactlink
     - webform
 third_party_settings:
   layout_builder:

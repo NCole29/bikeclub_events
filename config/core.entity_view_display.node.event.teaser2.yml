@@ -283,7 +283,7 @@ content:
       dialog: narrow
       attributes:
         class:
-          - w3-dark-button
+          - register-button
     third_party_settings: {  }
     weight: 4
     region: content

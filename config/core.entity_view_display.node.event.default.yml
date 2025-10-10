@@ -30,7 +30,6 @@ dependencies:
     - options
     - text
     - user
-    - user_contactlink
     - webform
 third_party_settings:
   layout_builder:
@@ -139,7 +138,7 @@ third_party_settings:
                   dialog: narrow
                   attributes:
                     class:
-                      - blue-button
+                      - register-button
                 third_party_settings: {  }
             weight: 8
             additional: {  }
@@ -216,7 +215,7 @@ third_party_settings:
                   dialog: ''
                   attributes:
                     class:
-                      - blue-button
+                      - register-button
                 third_party_settings: {  }
             weight: 7
             additional: {  }
@@ -413,7 +412,7 @@ content:
       dialog: narrow
       attributes:
         class:
-          - w3-dark-button
+          - register-button
     third_party_settings: {  }
     weight: 3
     region: content

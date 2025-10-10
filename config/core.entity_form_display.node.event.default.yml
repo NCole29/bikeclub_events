@@ -55,7 +55,6 @@ third_party_settings:
     group_banner_image:
       children:
         - banner_image
-        - field_padding
       label: 'Banner image'
       region: content
       parent_name: group_tabs
