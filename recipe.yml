@@ -34,8 +34,7 @@ config:
       grantPermissions:
         - 'delete own webform submission'
     pathauto.pattern.content:
-      action: 'update' 
-      arguments:
+      simpleConfigUpdate:
         bundles:
           event: event
     webform.settings:
