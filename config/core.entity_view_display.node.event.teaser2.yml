@@ -261,11 +261,6 @@ targetEntityType: node
 bundle: event
 mode: teaser2
 content:
-  content_moderation_control:
-    settings: {  }
-    third_party_settings: {  }
-    weight: -20
-    region: first
   field_location:
     type: entity_reference_entity_view
     label: above
