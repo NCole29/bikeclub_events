@@ -244,7 +244,7 @@ third_party_settings:
               context_mapping:
                 entity: layout_builder.entity
               formatter:
-                type: entity_reference_contact
+                type: user_contact_link
                 label: above
                 settings: {  }
                 third_party_settings: {  }
@@ -281,7 +281,7 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
               formatter:
-                type: entity_reference_contact
+                type: user_contact_link
                 label: above
                 settings: {  }
                 third_party_settings: {  }
@@ -355,7 +355,7 @@ content:
     weight: 2
     region: content
   field_contact_person:
-    type: entity_reference_contact
+    type: user_contact_link
     label: above
     settings: {  }
     third_party_settings: {  }
