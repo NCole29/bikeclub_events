@@ -1,6 +1,7 @@
 _meta:
   version: '1.0'
   entity_type: menu_link_content
+  uuid: 973a2e49-5253-4191-b9ac-1aef3706ec99
   bundle: menu_link_content
   default_langcode: en
 default:
