@@ -22,11 +22,13 @@ elements: |-
   event:
     '#type': webform_computed_token
     '#title': Event
-    '#template': '[webform_submission:node:title]'
+    '#title_display': inline
+    '#template': '[webform_submission:source-title]'
   event_date:
     '#type': webform_computed_token
     '#title': 'Event date'
-    '#template': '[webform_submission:node:field_date:date:short]'
+    '#title_display': inline
+    '#template': '[webform_submission:source-entity:field_date:date:day_and_date]'
   name:
     '#type': textfield
     '#title': Name
@@ -51,7 +53,7 @@ settings:
   page_submit_path: ''
   page_confirm_path: ''
   page_theme_name: ''
-  form_title: source_entity_webform
+  form_title: source_entity
   form_submit_once: true
   form_open_message: ''
   form_close_message: ''
@@ -80,6 +82,7 @@ settings:
   form_access_denied_message: ''
   form_access_denied_attributes: {  }
   form_file_limit: ''
+  form_file_limit_message: ''
   form_attributes: {  }
   form_method: ''
   form_action: ''

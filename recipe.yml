@@ -12,6 +12,7 @@ install:
   - datetimehideseconds
   - smart_date
   - webform
+  - webform_ui
 config:
   strict: false
   import:
