@@ -24,7 +24,10 @@
     "bikeclub/bikeclub_locations": "dev-main",
     "drupal/conditional_fields": "^4.0@alpha",		
     "drupal/datetimehideseconds": "^1.0",
-    "drupal/smart_date": "^4.2"
+    "drupal/smart_date": "^4.2",
+    "drupal/webform": "^6.3@beta",
+    "drupal/webform_views": "^5.5",
+    "drupal/webform_views_extras": "^2.0"
   },
   "version": "1.0.1"
 }
