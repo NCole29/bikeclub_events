@@ -277,22 +277,6 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 8
             additional: {  }
-          d32ba7d7-a4bf-44e8-886e-8a2807b84feb:
-            uuid: d32ba7d7-a4bf-44e8-886e-8a2807b84feb
-            region: first
-            configuration:
-              id: 'field_block:node:event:field_registrations_visible'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: entity_reference_label
-                label: above
-                settings:
-                  link: true
-                third_party_settings: {  }
-            weight: 11
-            additional: {  }
         third_party_settings: {  }
       -
         layout_id: layout_onecol
@@ -309,8 +293,6 @@ third_party_settings:
       restricted_categories: {  }
       blacklisted_blocks: {  }
       whitelisted_blocks: {  }
-_core:
-  default_config_hash: PkGGGGcd33H2tsUfsclhY3oDaC5QKiR0GiL067IBqnc
 id: node.event.default
 targetEntityType: node
 bundle: event

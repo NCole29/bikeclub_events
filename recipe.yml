@@ -39,6 +39,7 @@ config:
     user.role.authenticated:
       grantPermissions:
         - 'delete own webform submission'
+        - 'view webform submissions own node'
     pathauto.pattern.content:
       simpleConfigUpdate:
         bundles:
