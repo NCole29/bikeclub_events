@@ -2,7 +2,6 @@ langcode: en
 status: open
 dependencies:
   module:
-    - bikeclub
     - honeypot
 third_party_settings:
   honeypot:
