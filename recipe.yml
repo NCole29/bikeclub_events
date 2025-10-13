@@ -9,6 +9,7 @@ recipes:
 install:
   - link
   # Contrib.
+  - calendar_view
   - datetimehideseconds
   - smart_date
   - webform
