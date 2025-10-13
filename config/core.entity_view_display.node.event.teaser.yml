@@ -9,7 +9,6 @@ dependencies:
     - field.field.node.event.field_contact_person
     - field.field.node.event.field_date
     - field.field.node.event.field_location
-    - field.field.node.event.field_padding
     - field.field.node.event.field_page_access
     - field.field.node.event.field_registration
     - field.field.node.event.field_registration_closing_date
@@ -30,7 +29,6 @@ dependencies:
     - smart_date
     - text
     - user
-    - webform
 third_party_settings:
   layout_builder:
     enabled: false
@@ -47,20 +45,10 @@ targetEntityType: node
 bundle: event
 mode: teaser
 content:
-  field_contact_form:
-    type: entity_reference_label
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 8
-    region: content
-  field_contact_person:
-    type: user_contact_link
-    label: above
+  content_moderation_control:
     settings: {  }
     third_party_settings: {  }
-    weight: 9
+    weight: 0
     region: content
   field_date:
     type: smartdate_default
@@ -82,7 +70,7 @@ content:
         decimals: 2
         suffix: h
     third_party_settings: {  }
-    weight: 1
+    weight: 0
     region: content
   field_location:
     type: entity_reference_entity_view
@@ -91,7 +79,7 @@ content:
       view_mode: teaser
       link: false
     third_party_settings: {  }
-    weight: 3
+    weight: 2
     region: content
   field_registration_closing_date:
     type: datetime_default
@@ -100,31 +88,7 @@ content:
       timezone_override: America/New_York
       format_type: long
     third_party_settings: {  }
-    weight: 7
-    region: content
-  field_registration_form:
-    type: webform_entity_reference_link
-    label: visually_hidden
-    settings:
-      label: 'Register for [webform:title]'
-      dialog: ''
-      attributes:
-        class:
-          - register-button
-    third_party_settings: {  }
-    weight: 6
-    region: content
-  field_registration_free_form:
-    type: webform_entity_reference_link
-    label: visually_hidden
-    settings:
-      label: 'Register for event'
-      dialog: narrow
-      attributes:
-        class:
-          - register-button
-    third_party_settings: {  }
-    weight: 5
+    weight: 4
     region: content
   field_registration_link:
     type: link
@@ -136,21 +100,25 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 4
+    weight: 3
     region: content
   field_summary:
     type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 2
+    weight: 1
     region: content
 hidden:
   banner_image: true
   field_components: true
+  field_contact_form: true
+  field_contact_person: true
   field_padding: true
   field_page_access: true
   field_registration: true
+  field_registration_form: true
+  field_registration_free_form: true
   field_registrations_visible: true
   field_text: true
   field_type_of_page: true

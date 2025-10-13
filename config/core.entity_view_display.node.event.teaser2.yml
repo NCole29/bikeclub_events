@@ -9,7 +9,6 @@ dependencies:
     - field.field.node.event.field_contact_person
     - field.field.node.event.field_date
     - field.field.node.event.field_location
-    - field.field.node.event.field_padding
     - field.field.node.event.field_page_access
     - field.field.node.event.field_registration
     - field.field.node.event.field_registration_closing_date
@@ -261,6 +260,11 @@ targetEntityType: node
 bundle: event
 mode: teaser2
 content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: first
   field_location:
     type: entity_reference_entity_view
     label: above

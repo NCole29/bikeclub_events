@@ -323,12 +323,13 @@ content:
     weight: 2
     region: content
   field_contact_person:
-    type: user_contact_link
+    type: entity_reference_label
     label: above
-    settings: {  }
+    settings:
+      link: true
     third_party_settings: {  }
-    weight: 3
-    region: content
+    weight: 20
+    region: first
   field_date:
     type: datetime_default
     label: above
