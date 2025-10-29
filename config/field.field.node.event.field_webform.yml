@@ -2,13 +2,13 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_registration_form
+    - field.storage.node.field_webform
     - node.type.event
     - webform.webform.free_event
   module:
     - webform
-id: node.event.field_registration_form
-field_name: field_registration_form
+id: node.event.field_webform
+field_name: field_webform
 entity_type: node
 bundle: event
 label: 'Registration form'

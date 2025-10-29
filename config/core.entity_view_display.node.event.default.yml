@@ -9,12 +9,12 @@ dependencies:
     - field.field.node.event.field_date
     - field.field.node.event.field_location
     - field.field.node.event.field_page_access
-    - field.field.node.event.field_registration_closing
-    - field.field.node.event.field_registration_form
-    - field.field.node.event.field_registration_limit
+    - field.field.node.event.field_webform_closing
+    - field.field.node.event.field_webform
+    - field.field.node.event.field_webform_limit
     - field.field.node.event.field_registration_link
     - field.field.node.event.field_registration_type
-    - field.field.node.event.field_registrations_visible
+    - field.field.node.event.field_webform_results
     - field.field.node.event.field_summary
     - field.field.node.event.field_text
     - field.field.node.event.field_type_of_page
@@ -146,7 +146,7 @@ third_party_settings:
             uuid: e5ac2c91-0a5c-433a-98c2-717cf12db1f4
             region: first
             configuration:
-              id: 'field_block:node:event:field_registration_form'
+              id: 'field_block:node:event:field_webform'
               label: 'Registration form'
               label_display: '0'
               provider: layout_builder
@@ -237,7 +237,7 @@ third_party_settings:
             uuid: 616d2eee-79e8-4815-bd24-38d3ff344601
             region: first
             configuration:
-              id: 'field_block:node:event:field_registration_limit'
+              id: 'field_block:node:event:field_webform_limit'
               label_display: '0'
               context_mapping:
                 entity: layout_builder.entity
@@ -254,7 +254,7 @@ third_party_settings:
             uuid: d8269348-9a6d-4ba1-9dd4-2e1a7c4d174f
             region: first
             configuration:
-              id: 'field_block:node:event:field_registration_closing'
+              id: 'field_block:node:event:field_webform_closing'
               label_display: '0'
               context_mapping:
                 entity: layout_builder.entity
@@ -372,7 +372,7 @@ content:
     third_party_settings: {  }
     weight: 12
     region: first
-  field_registration_closing:
+  field_webform_closing:
     type: datetime_default
     label: above
     settings:
@@ -381,7 +381,7 @@ content:
     third_party_settings: {  }
     weight: 23
     region: first
-  field_registration_form:
+  field_webform:
     type: webform_entity_reference_link
     label: hidden
     settings:
@@ -393,7 +393,7 @@ content:
     third_party_settings: {  }
     weight: 3
     region: content
-  field_registration_limit:
+  field_webform_limit:
     type: number_integer
     label: above
     settings:
@@ -409,7 +409,7 @@ content:
     third_party_settings: {  }
     weight: 24
     region: first
-  field_registrations_visible:
+  field_webform_results:
     type: entity_reference_label
     label: above
     settings:

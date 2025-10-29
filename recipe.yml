@@ -3,7 +3,7 @@ description: 'Provides Event and Location content types.'
 type: 'Content type'
 recipes:
   - bikeclub_content_type_base
-  - bikeclub_field_storage_registration
+  - bikeclub_field_storage_webform
   - bikeclub_banner
   - bikeclub_locations
 install:
