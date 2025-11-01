@@ -2,7 +2,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.card_row
+    - core.entity_view_mode.node.summary_2
     - field.field.node.event.banner_image
     - field.field.node.event.field_components
     - field.field.node.event.field_contact_form
@@ -41,23 +41,23 @@ third_party_settings:
       restricted_categories: {  }
       blacklisted_blocks: {  }
       whitelisted_blocks: {  }
-id: node.event.card_row
+id: node.event.summary_2
 targetEntityType: node
 bundle: event
-mode: card_row
+mode: summary_2
 content:
   field_date:
     type: datetime_default
-    label: inline
+    label: above
     settings:
       timezone_override: ''
-      format_type: day_date_time
+      format_type: day_date_time_short
     third_party_settings: {  }
     weight: 1
     region: content
   field_location:
     type: entity_reference_label
-    label: inline
+    label: above
     settings:
       link: true
     third_party_settings: {  }
@@ -75,7 +75,7 @@ content:
     region: first
   field_summary:
     type: text_default
-    label: hidden
+    label: visually_hidden
     settings: {  }
     third_party_settings: {  }
     weight: 3
@@ -85,7 +85,7 @@ content:
     label: hidden
     settings:
       label: Register
-      dialog: ''
+      dialog: narrow
       attributes:
         class:
           - button
