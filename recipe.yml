@@ -32,14 +32,37 @@ config:
             webform_routes:
               - entity.webform.results_submissions
         webform_submission_bulk_form: false
+    user.role.events_coordinator:
+      createIfNotExists:
+        label: 'Events coordinator'
+      # 'Webform' refers to the forms, not webform nodes.
+      grantPermissions:
+        - 'access own webform configuration'
+        - 'access webform help'
+        - 'access webform overview'
+        - 'configure editable event node layout overrides'
+        - 'create event'
+        - 'create webform content'
+        - 'delete own webform'
+        - 'delete any event content'
+        - 'edit own webform'
+        - 'edit any event content'
+        - 'use text format basic_html'
+        - 'use text format summary_fields'
     user.role.site_admin:
       createIfNotExists:
         label: 'Site administrator'
       grantPermissions:
-        - 'create event content'
-        - 'delete any event content'
-        - 'edit any event content'
+        - 'access own webform configuration'
+        - 'access webform help'
+        - 'access webform overview'
         - 'configure editable event node layout overrides'
+        - 'create event'
+        - 'create webform content'
+        - 'delete own webform'
+        - 'delete any event content'
+        - 'edit own webform'
+        - 'edit any event content'
         - 'use text format basic_html'
         - 'use text format summary_fields'
     user.role.authenticated:
@@ -53,3 +76,7 @@ config:
     webform.settings:
       ui:
         video_display: hidden
+
+
+
+
