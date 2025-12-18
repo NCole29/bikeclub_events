@@ -13,8 +13,8 @@ dependencies:
     - smart_date
     - text
     - user
-id: events
-label: Events
+id: club_events
+label: 'Club events'
 module: views
 description: 'Events page with tabs for Upcoming and Past events. Events block for optional placement on home page.'
 tag: ''
@@ -266,16 +266,18 @@ display:
             offset_label: Offset
           quantity: 9
       empty:
-        area_text_custom:
-          id: area_text_custom
+        area:
+          id: area
           table: views
-          field: area_text_custom
+          field: area
           relationship: none
           group_type: group
           admin_label: ''
-          plugin_id: text_custom
+          plugin_id: text
           empty: true
-          content: 'There are no scheduled events.'
+          content:
+            value: 'There are no scheduled events.'
+            format: basic_html
           tokenize: false
       filters:
         status:
@@ -1014,7 +1016,21 @@ display:
         type: some
         options:
           offset: 0
-          items_per_page: 5
+          items_per_page: 7
+      empty:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text
+          empty: true
+          content:
+            value: 'There are no scheduled events.'
+            format: basic_html
+          tokenize: false
       filters:
         status:
           id: status
@@ -1095,6 +1111,7 @@ display:
       row:
         type: fields
       defaults:
+        empty: false
         title: false
         pager: false
         use_more: false
@@ -1111,7 +1128,7 @@ display:
       group_by: false
       display_description: ''
       use_more: true
-      use_more_always: true
+      use_more_always: false
       use_more_text: more
       link_display: page_1
       link_url: ''

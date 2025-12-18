@@ -11,8 +11,8 @@ dependencies:
     - user
     - webform
     - webform_views
-id: events_free
-label: 'Free events'
+id: club_events_free
+label: 'Club events, free'
 module: views
 description: 'Free event table and registrations. Free events list in My Account.'
 tag: ''

@@ -3,7 +3,7 @@ description: 'Provides Event and Location content types.'
 type: 'Content type'
 recipes:
   - bikeclub_content_type_base
-  - bikeclub_field_storage_webform
+  - bikeclub_registration_field_storage
   - bikeclub_banner
   - bikeclub_locations
 install:
@@ -22,16 +22,19 @@ config:
   strict: false
   import:
     smart_date: '*'
+    webform: '*'
   actions:
     webform.settings:
       simpleConfigUpdate:
         default_submission_views:
           embed_administer:
             title: 'Administer submissions'
-            view: 'webform_submissions:embed_administer'
-            webform_routes:
-              - entity.webform.results_submissions
-        webform_submission_bulk_form: false
+            view: 'webform_submissions_custom:embed_administer'
+            global_routes:
+              - entity.webform_submission.collection
+            webform_routes: {  }
+            node_routes: {  }
+        file_public: true
     user.role.events_coordinator:
       createIfNotExists:
         label: 'Events coordinator'
@@ -76,7 +79,6 @@ config:
     webform.settings:
       ui:
         video_display: hidden
-
-
-
+      file:
+        file_public: true
 

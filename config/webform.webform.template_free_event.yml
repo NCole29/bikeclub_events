@@ -11,9 +11,9 @@ weight: 0
 open: null
 close: null
 uid: 1
-template: false
+template: true
 archive: false
-id: free_event
+id: template_free_event
 title: 'Free event'
 description: '<p>Form collects name and email.<br>Select this form when creating or editing an Event page, when the event is free but registration is required.</p>'
 categories:
