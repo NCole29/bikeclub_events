@@ -20,7 +20,7 @@
   "require": {
     "bikeclub/bikeclub_banner": "dev-main",
     "bikeclub/bikeclub_content_type_base": "dev-main",
-    "bikeclub/bikeclub_field_storage_registration": "dev-main",
+    "bikeclub/bikeclub_registration_field_storage": "dev-main",
     "bikeclub/bikeclub_locations": "dev-main",
     "drupal/calendar_view": "^2.1",
     "drupal/conditional_fields": "^4.0@alpha",		
